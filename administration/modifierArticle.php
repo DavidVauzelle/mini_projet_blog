@@ -1,11 +1,15 @@
 <?php
 require_once '../connexion.php';
 
-$id = $_GET['id'];
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    
+    // Requête pour récupérer tous les champs d'un article depuis la bdd
+    $requete = "SELECT * FROM articles WHERE id = $id";
+    $series = $bdd->query($requete);
+    $article = $series->fetch(PDO::FETCH_ASSOC);
 
-$requete = "SELECT * FROM articles WHERE id = $id";
-$series = $bdd->query($requete);
-$resultat = $series->fetch(PDO::FETCH_ASSOC);
+}
 
 ?>
 <!DOCTYPE html>
@@ -18,53 +22,51 @@ $resultat = $series->fetch(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-    <form action="updateTraitement.php" method="get">
+    <form action="updateTraitement.php" method="GET">
         <h1>Modification de l'article</h1>
         <div>
             <label for="name">Nom Article* : </label>
-            <input type="text" name="nom" value="<?= $resultat["nom"];?>" required>    
+            <input type="text" name="nom" value="<?= $article["nom"]; ?>" required>    
         </div>
         <div>
             <label for="descriptionAccueil">Description Accueil* : </label>
             <textarea
                 id="description_accueil"
                 name="description_accueil"
-                value="<?= $resultat["description_accueil"];?>"
                 placeholder="Decription de la page d'Accueil de l'article"
                 rows="5"
                 maxlength="2500" 
-                required></textarea> 
+                required><?= $article["description_accueil"]; ?>"</textarea> 
         </div>
         <div>
             <label for="descriptionDetail">Description Detail* : </label>
             <textarea
                 id="description_detail"
                 name="description_detail"
-                value="<?= $resultat["description_detail"];?>"
                 placeholder="Decription de la page détaillée de l'article"
                 rows="5"
                 maxlength="2500" 
-                required></textarea>     
+                required><?= $article["description_detail"]; ?>"</textarea>     
         </div>
         <div>
             <label for="imageAccueil">Image Accueil* : </label>
-            <input type="text" name="image_accueil" value="<?= $resultat["image_accueil"];?>" required>    
+            <input type="text" name="image_accueil" value="<?= $article["image_accueil"]; ?>" required>    
         </div>
         <div>
             <label for="imageDetail">Image Detail* : </label>
-            <input type="text" name="image_detail" value="<?= $resultat["image_detail"];?>" required>    
+            <input type="text" name="image_detail" value="<?= $article["image_detail"]; ?>" required>    
         </div>
         <div>
             <label for="altImage">Alt* : </label>
-            <input type="text" name="alt" value="<?= $resultat["alt"];?>" required>
+            <input type="text" name="alt" value="<?= $article["alt"]; ?>" required>
         </div>
         <div>
-            <input type="hidden" name="id" value="<?= $id;?>">
+            <input type="hidden" name="id" value="<?= $id; ?>">
         </div>
         <div>
             <input type="submit" name="ajouter" value="Modifier Article">
             <input type="reset" value="Réinitialiser">    
-        </div>  
+        </div>
     </form> 
 
 </body>

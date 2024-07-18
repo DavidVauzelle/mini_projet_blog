@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <form action="insertTraitement.php" method="get">
+    <form action="insertTraitement.php" method="GET">
         <h1>Ajouter un Article</h1>
         <div>
             <label for="name">Nom Article* : </label>

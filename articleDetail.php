@@ -24,10 +24,10 @@ if (isset($_GET['id'])) {
 
     <?php foreach($series as $serie) : ?>
     <article>
+        <a href="index.php?">Page d'accueil</a>
         <h1><?= $serie['nom']; ?></h1>
         <img src="<?= $serie['image_detail']; ?>" alt="<?= $serie['alt']; ?>">
-        <p><?= $serie['description_detail']; ?></p>
-        <a href="index.php?">Page d'accueil</a> 
+        <p><?= $serie['description_detail']; ?></p> 
     </article>
     <?php endforeach; ?>
 

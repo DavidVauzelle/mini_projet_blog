@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Projet Blog"> 
-    <title>Page Admin de modification d'un Article</title>
+    <title>Page d'Administration pour Modifier un Article</title>
 </head>
 <body>
 

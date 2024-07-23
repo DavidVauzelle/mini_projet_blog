@@ -17,23 +17,38 @@ $series=$bdd->query($requete);
     <title>Page d'Administration pour lister les articles</title>
 </head>
 <body>
-    <nav>
-        <a href="../index.php?">Page d'accueil</a>    
-    </nav>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.php?">Page d'accueil</a></li>
+                <li><a href="../administration/accueilAdmin.php">Administration du blog</a></li>
+            </ul>  
+        </nav>    
+    </header>
+    <main>
+        <h1>Mes séries préférées</h1>
 
-    <h1>Mes séries préférées</h1>
+        <ul>
+            <li>
+                <a href="ajoutArticle.php">Ajouter un article</a>
+            </li>
+        </ul>
 
-    <a href="ajoutArticle.php">Ajouter un article</a>
-
-    <?php foreach($series as $serie) : ?>
-        <article>
-            <h2><?= $serie['nom']; ?></h2>
-            <img src="<?= $serie['image_accueil']; ?>" alt="<?= $serie['alt']; ?>">
-            <p><?= $serie['description_accueil']; ?></p>
-            <a href="modifierArticle.php?id=<?= $serie['id']; ?>">Modifier article</a>
-            <a href="deleteTraitement.php?id=<?= $serie['id']; ?>">Supprimer article</a>
-        </article>
-    <?php endforeach; ?>
-
+        <?php foreach($series as $serie) : ?>
+            <article>
+                <h2><?= $serie['nom']; ?></h2>
+                <img src="<?= $serie['image_accueil']; ?>" alt="<?= $serie['alt']; ?>">
+                <p><?= $serie['description_accueil']; ?></p>
+                <ul>
+                    <li>
+                        <a href="modifierArticle.php?id=<?= $serie['id']; ?>">Modifier article</a>
+                    </li>
+                    <li>
+                        <a href="deleteTraitement.php?id=<?= $serie['id']; ?>">Supprimer article</a>
+                    </li>
+                </ul>
+            </article>
+        <?php endforeach; ?>    
+    </main>
 </body>
 </html>

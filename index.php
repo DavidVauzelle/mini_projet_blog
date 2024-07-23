@@ -20,14 +20,13 @@ $series=$bdd->query($requete);
     <header>
         <nav>
             <ul>
-                <li><a href="../index.php?">Page d'accueil</a></li>
                 <li><a href="administration/accueilAdmin.php">Administration du blog</a></li>
             </ul>  
         </nav>    
     </header>
     <main>
         <h1>Mes séries préférées</h1>
-        
+
         <?php foreach($series as $serie) : ?>
             <article>
                 <h2><?= $serie['nom']; ?></h2>

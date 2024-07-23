@@ -21,15 +21,24 @@ if (isset($_GET['id'])) {
     <title>Page d'une série</title>
 </head>
 <body>
-
-    <?php foreach($series as $serie) : ?>
-    <article>
-        <a href="index.php?">Page d'accueil</a>
-        <h1><?= $serie['nom']; ?></h1>
-        <img src="<?= $serie['image_detail']; ?>" alt="<?= $serie['alt']; ?>">
-        <p><?= $serie['description_detail']; ?></p> 
-    </article>
-    <?php endforeach; ?>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.php?">Page d'accueil</a></li>
+                <li><a href="administration/accueilAdmin.php">Administration du blog</a></li>
+            </ul>  
+        </nav>    
+    </header>
+    <main>
+        <?php foreach($series as $serie) : ?>
+        <article>
+            <h1><?= $serie['nom']; ?></h1>
+            <img src="<?= $serie['image_detail']; ?>" alt="<?= $serie['alt']; ?>">
+            <p><?= $serie['description_detail']; ?></p> 
+        </article>
+        <?php endforeach; ?>    
+    </main>
+    
 
 </body>
 </html>

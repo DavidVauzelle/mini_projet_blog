@@ -7,18 +7,24 @@
     <title>Page d'Administration</title>
 </head>
 <body>
-    <a href="../index.php?">Page d'accueil</a>
-
-    <h1>Administration du blog</h1>
-    
-    <ul>
-        <li>
-            <a href="ajoutArticle.php">Ajouter un article</a>
-        </li>
-        <li>
-            <a href="listerArticles.php">Lister les articles</a>
-        </li>
-    </ul> 
-
+<header>
+        <nav>
+            <ul>
+                <li><a href="../index.php?">Page d'accueil</a></li>
+            </ul>  
+        </nav>    
+    </header>
+    <main>
+        <h1>Administration du blog</h1>
+        
+        <ul>
+            <li>
+                <a href="ajoutArticle.php">Ajouter un article</a>
+            </li>
+            <li>
+                <a href="listerArticles.php">Lister les articles</a>
+            </li>
+        </ul>     
+    </main>
 </body>
 </html>

@@ -14,10 +14,15 @@ $series=$bdd->query($requete);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Projet Blog"> 
-    <title>Page Admin pour lister les articles</title>
+    <title>Page d'Administration pour lister les articles</title>
 </head>
 <body>
+    <nav>
+        <a href="../index.php?">Page d'accueil</a>    
+    </nav>
+
     <h1>Mes séries préférées</h1>
+
     <a href="ajoutArticle.php">Ajouter un article</a>
 
     <?php foreach($series as $serie) : ?>

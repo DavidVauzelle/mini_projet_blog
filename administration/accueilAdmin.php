@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Projet Blog"> 
-    <title>Page d'Accueil Admin</title>
+    <title>Page d'Administration</title>
 </head>
 <body>
+    <a href="../index.php?">Page d'accueil</a>
+
     <h1>Administration du blog</h1>
     
     <ul>
@@ -16,7 +18,7 @@
         <li>
             <a href="listerArticles.php">Lister les articles</a>
         </li>
-    </ul>    
+    </ul> 
 
 </body>
 </html>

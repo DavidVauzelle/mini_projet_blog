@@ -25,7 +25,7 @@ $series=$bdd->query($requete);
             <h2><?= $serie['nom']; ?></h2>
             <img src="<?= $serie['image_accueil']; ?>" alt="<?= $serie['alt']; ?>">
             <p><?= $serie['description_accueil']; ?></p>
-            <a href="modifierArticle.php">Modifier article</a>
+            <a href="modifierArticle.php?id=<?= $serie['id']; ?>">Modifier article</a>
             <a href="deleteTraitement.php?id=<?= $serie['id']; ?>">Supprimer article</a>
         </article>
     <?php endforeach; ?>

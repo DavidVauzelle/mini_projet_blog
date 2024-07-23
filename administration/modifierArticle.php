@@ -3,7 +3,7 @@ require_once '../connexion.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    
+
     // Requête pour récupérer tous les champs d'un article depuis la bdd
     $requete = "SELECT * FROM articles WHERE id = $id";
     $series = $bdd->query($requete);
@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
         <h1>Modification de l'article</h1>
         <div>
             <label for="name">Nom Article* : </label>
-            <input type="text" name="nom" value="<?= $article["nom"]; ?>" required>    
+            <input type="text" name="nom" value="<?= htmlspecialchars($article['nom']); ?>" required>    
         </div>
         <div>
             <label for="descriptionAccueil">Description Accueil* : </label>

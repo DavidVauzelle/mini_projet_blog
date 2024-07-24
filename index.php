@@ -2,11 +2,6 @@
 
 require_once 'connexion.php';
 
-// Requête SQL pour lister les articles enregistrer dans la bdd
-// $requete="SELECT * FROM articles;";
-// $requete="SELECT id, nom, description_accueil, image_accueil, alt FROM articles";
-// $series=$bdd->query($requete);
-
 // Requête SQL pour sélectionner les colonnes souhaitées de la table articles
 $sql = "SELECT id, nom, description_accueil, image_accueil, alt FROM articles";
 

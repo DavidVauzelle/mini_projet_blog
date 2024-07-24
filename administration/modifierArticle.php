@@ -9,6 +9,18 @@ if (isset($_GET['id'])) {
     $series = $bdd->query($requete);
     $article = $series->fetch(PDO::FETCH_ASSOC);
 
+    // Requête SQL pour sélectionner les données souhaitées de la table articles
+    // $sql = "SELECT * FROM articles WHERE id = $id";
+
+    // // Préparer la requête
+    // $series = $bdd->prepare($sql);
+
+    // // Exécuter la requête
+    // $series->execute();
+
+    // // Récupérer les résultats
+    // $article = $series->fetchAll(PDO::FETCH_ASSOC);
+
 }
 
 ?>
@@ -26,7 +38,7 @@ if (isset($_GET['id'])) {
         <h1>Modification de l'article</h1>
         <div>
             <label for="name">Nom Article* : </label>
-            <input type="text" name="nom" value="<?= htmlspecialchars($article['nom']); ?>" required>    
+            <input type="text" name="nom" value="<?= htmlspecialchars($serie['nom']); ?>" required>    
         </div>
         <div>
             <label for="descriptionAccueil">Description Accueil* : </label>
@@ -36,7 +48,7 @@ if (isset($_GET['id'])) {
                 placeholder="Decription de la page d'Accueil de l'article"
                 rows="5"
                 maxlength="2500" 
-                required><?= $article["description_accueil"]; ?>"</textarea> 
+                required><?= $serie["description_accueil"]; ?>"</textarea> 
         </div>
         <div>
             <label for="descriptionDetail">Description Detail* : </label>
@@ -46,19 +58,19 @@ if (isset($_GET['id'])) {
                 placeholder="Decription de la page détaillée de l'article"
                 rows="5"
                 maxlength="2500" 
-                required><?= $article["description_detail"]; ?>"</textarea>     
+                required><?= $serie["description_detail"]; ?>"</textarea>     
         </div>
         <div>
             <label for="imageAccueil">Image Accueil* : </label>
-            <input type="text" name="image_accueil" value="<?= $article["image_accueil"]; ?>" required>    
+            <input type="text" name="image_accueil" value="<?= $serie["image_accueil"]; ?>" required>    
         </div>
         <div>
             <label for="imageDetail">Image Detail* : </label>
-            <input type="text" name="image_detail" value="<?= $article["image_detail"]; ?>" required>    
+            <input type="text" name="image_detail" value="<?= $serie["image_detail"]; ?>" required>    
         </div>
         <div>
             <label for="altImage">Alt* : </label>
-            <input type="text" name="alt" value="<?= $article["alt"]; ?>" required>
+            <input type="text" name="alt" value="<?= $serie["alt"]; ?>" required>
         </div>
         <div>
             <input type="hidden" name="id" value="<?= $id; ?>">

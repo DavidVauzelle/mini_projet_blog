@@ -2,7 +2,7 @@
 
 require_once 'connexion.php';
 
-// Requête SQL pour sélectionner les colonnes souhaitées de la table articles
+// Requête SQL pour sélectionner les données souhaitées de la table articles
 $sql = "SELECT id, nom, description_accueil, image_accueil, alt FROM articles";
 
 // Préparer la requête

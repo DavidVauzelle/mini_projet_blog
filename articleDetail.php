@@ -5,9 +5,17 @@ require_once 'connexion.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Requête SQL pour récupérer les éléments d'un article de la bdd
-    $requete="SELECT id, nom, description_detail, image_detail, alt FROM articles where id = $id";
-    $series=$bdd->query($requete);
+    // Requête SQL pour sélectionner les données souhaitées de la table articles
+    $sql = "SELECT id, nom, description_detail, image_detail, alt FROM articles where id = $id";
+
+    // Préparer la requête
+    $articles = $bdd->prepare($sql);
+
+    // Exécuter la requête
+    $articles->execute();
+
+    // Récupérer les résultats
+    $series = $articles->fetchAll(PDO::FETCH_ASSOC);
 
 }
 
@@ -32,9 +40,9 @@ if (isset($_GET['id'])) {
     <main>
         <?php foreach($series as $serie) : ?>
         <article>
-            <h1><?= $serie['nom']; ?></h1>
-            <img src="<?= $serie['image_detail']; ?>" alt="<?= $serie['alt']; ?>">
-            <p><?= $serie['description_detail']; ?></p> 
+            <h1><?= htmlspecialchars($serie['nom']); ?></h1>
+            <img src="<?= htmlspecialchars($serie['image_detail']); ?>" alt="<?= htmlspecialchars($serie['alt']); ?>">
+            <p><?= htmlspecialchars($serie['description_detail']); ?></p> 
         </article>
         <?php endforeach; ?>    
     </main>

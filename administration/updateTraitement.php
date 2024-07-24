@@ -10,11 +10,6 @@ $imageAccueil = $_GET['image_accueil'];
 $imageDetail = $_GET['image_detail'];
 $altImage = $_GET['alt'];
 
-// Requête non préparée
-
-// $requete = "UPDATE articles SET nom=:nom', description_accueil=:descriptionAccueil', description_detail=:descriptionDetail', image_accueil=:imageAccueil', image_detail=:imageDetail', alt=:altImage' WHERE id=$id";
-// $bdd->exec($requete);
-
 // Requête Préparée
 $sql = "UPDATE articles SET nom=:nom, description_accueil=:descriptionAccueil, description_detail=:descriptionDetail, image_accueil=:imageAccueil, image_detail=:imageDetail, alt=:altImage WHERE id=$id";
 

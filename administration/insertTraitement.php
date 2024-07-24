@@ -9,11 +9,6 @@ $imageAccueil = $_GET['image_accueil'];
 $imageDetail = $_GET['image_detail'];
 $altImage = $_GET['alt'];
 
-// Requête non préparée
-// $requete = "INSERT INTO articles (nom, description_accueil, description_detail, image_accueil, image_detail, alt) 
-//             VALUES ('$nom', '$descriptionAccueil', '$descriptionDetail', '$imageAccueil', '$imageDetail', '$altImage')";
-// $bdd->exec($requete);
-
 // Requête préparée
 $sql = 'INSERT INTO articles(nom, description_accueil, description_detail, image_accueil, image_detail, alt) VALUES(:nom, :description_accueil, :description_detail, :image_accueil, :image_detail, :alt)';
 

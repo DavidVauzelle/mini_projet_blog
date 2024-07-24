@@ -4,8 +4,20 @@ require_once 'connexion.php';
 
 // Requête SQL pour lister les articles enregistrer dans la bdd
 // $requete="SELECT * FROM articles;";
-$requete="SELECT id, nom, description_accueil, image_accueil, alt FROM articles";
-$series=$bdd->query($requete);
+// $requete="SELECT id, nom, description_accueil, image_accueil, alt FROM articles";
+// $series=$bdd->query($requete);
+
+// Requête SQL pour sélectionner les colonnes souhaitées de la table articles
+$sql = "SELECT id, nom, description_accueil, image_accueil, alt FROM articles";
+
+// Préparer la requête
+$articles = $bdd->prepare($sql);
+
+// Exécuter la requête
+$articles->execute();
+
+// Récupérer les résultats
+$series = $articles->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -29,10 +41,10 @@ $series=$bdd->query($requete);
 
         <?php foreach($series as $serie) : ?>
             <article>
-                <h2><?= $serie['nom']; ?></h2>
-                <img src="<?= $serie['image_accueil']; ?>" alt="<?= $serie['alt']; ?>">
-                <p><?= $serie['description_accueil']; ?></p>
-                <a href="articleDetail.php?id=<?= $serie['id']; ?>">En savoir plus</a> 
+                <h2><?= htmlspecialchars($serie['nom']); ?></h2>
+                <img src="<?= htmlspecialchars($serie['image_accueil']); ?>" alt="<?= htmlspecialchars($serie['alt']); ?>">
+                <p><?= htmlspecialchars($serie['description_accueil']); ?></p>
+                <a href="articleDetail.php?id=<?= htmlspecialchars($serie['id']); ?>">En savoir plus</a> 
             </article>
         <?php endforeach; ?>    
     </main>

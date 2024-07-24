@@ -6,13 +6,13 @@ require_once '../connexion.php';
 $sql = "SELECT id, nom, description_accueil, image_accueil, alt FROM articles";
 
 // Préparer la requête
-$series = $bdd->prepare($sql);
+$articles = $bdd->prepare($sql);
 
 // Exécuter la requête
-$series->execute();
+$articles->execute();
 
 // Récupérer les résultats
-$articles = $series->fetchAll(PDO::FETCH_ASSOC);
+$series = $articles->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -41,17 +41,17 @@ $articles = $series->fetchAll(PDO::FETCH_ASSOC);
             </li>
         </ul>
 
-        <?php foreach($articles as $article) : ?>
+        <?php foreach($series as $serie) : ?>
             <article>
-                <h2><?= htmlspecialchars($article['nom']); ?></h2>
-                <img src="<?= htmlspecialchars($article['image_accueil']); ?>" alt="<?= htmlspecialchars($article['alt']); ?>">
-                <p><?= htmlspecialchars($article['description_accueil']); ?></p>
+                <h2><?= htmlspecialchars($serie['nom']); ?></h2>
+                <img src="<?= htmlspecialchars($serie['image_accueil']); ?>" alt="<?= htmlspecialchars($serie['alt']); ?>">
+                <p><?= htmlspecialchars($serie['description_accueil']); ?></p>
                 <ul>
                     <li>
-                        <a href="modifierArticle.php?id=<?= htmlspecialchars($article['id']); ?>">Modifier article</a>
+                        <a href="modifierArticle.php?id=<?= htmlspecialchars($serie['id']); ?>">Modifier article</a>
                     </li>
                     <li>
-                        <a href="deleteTraitement.php?id=<?= htmlspecialchars($article['id']); ?>">Supprimer article</a>
+                        <a href="deleteTraitement.php?id=<?= htmlspecialchars($serie['id']); ?>">Supprimer article</a>
                     </li>
                 </ul>
             </article>

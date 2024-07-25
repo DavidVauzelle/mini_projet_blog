@@ -4,25 +4,20 @@ require_once '../connexion.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Requête pour récupérer tous les champs d'un article depuis la bdd
-    $requete = "SELECT * FROM articles WHERE id = $id";
-    $series = $bdd->query($requete);
+    // Requête SQL pour sélectionner les données souhaitées de la table articles
+    $sql = "SELECT * FROM articles WHERE id = :id";
+
+    // Préparer la requête
+    $series = $bdd->prepare($sql);
+    $series -> bindValue(':id', $id, PDO::PARAM_INT);
+
+    // Exécuter la requête
+    $series -> execute();
+
+    // Récupérer les résultats
     $article = $series->fetch(PDO::FETCH_ASSOC);
 
-    // Requête SQL pour sélectionner les données souhaitées de la table articles
-    // $sql = "SELECT * FROM articles WHERE id = $id";
-
-    // // Préparer la requête
-    // $series = $bdd->prepare($sql);
-
-    // // Exécuter la requête
-    // $series->execute();
-
-    // // Récupérer les résultats
-    // $article = $series->fetchAll(PDO::FETCH_ASSOC);
-
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,7 +33,7 @@ if (isset($_GET['id'])) {
         <h1>Modification de l'article</h1>
         <div>
             <label for="name">Nom Article* : </label>
-            <input type="text" name="nom" value="<?= htmlspecialchars($serie['nom']); ?>" required>    
+            <input type="text" name="nom" value="<?= htmlspecialchars($article['nom']); ?>" required>    
         </div>
         <div>
             <label for="descriptionAccueil">Description Accueil* : </label>
@@ -48,7 +43,7 @@ if (isset($_GET['id'])) {
                 placeholder="Decription de la page d'Accueil de l'article"
                 rows="5"
                 maxlength="2500" 
-                required><?= $serie["description_accueil"]; ?>"</textarea> 
+                required><?= htmlspecialchars($article["description_accueil"]); ?>"</textarea> 
         </div>
         <div>
             <label for="descriptionDetail">Description Detail* : </label>
@@ -58,19 +53,19 @@ if (isset($_GET['id'])) {
                 placeholder="Decription de la page détaillée de l'article"
                 rows="5"
                 maxlength="2500" 
-                required><?= $serie["description_detail"]; ?>"</textarea>     
+                required><?= htmlspecialchars($article["description_detail"]); ?>"</textarea>     
         </div>
         <div>
             <label for="imageAccueil">Image Accueil* : </label>
-            <input type="text" name="image_accueil" value="<?= $serie["image_accueil"]; ?>" required>    
+            <input type="text" name="image_accueil" value="<?= htmlspecialchars($article["image_accueil"]); ?>" required>    
         </div>
         <div>
             <label for="imageDetail">Image Detail* : </label>
-            <input type="text" name="image_detail" value="<?= $serie["image_detail"]; ?>" required>    
+            <input type="text" name="image_detail" value="<?= htmlspecialchars($article["image_detail"]); ?>" required>    
         </div>
         <div>
             <label for="altImage">Alt* : </label>
-            <input type="text" name="alt" value="<?= $serie["alt"]; ?>" required>
+            <input type="text" name="alt" value="<?= htmlspecialchars($article["alt"]); ?>" required>
         </div>
         <div>
             <input type="hidden" name="id" value="<?= $id; ?>">

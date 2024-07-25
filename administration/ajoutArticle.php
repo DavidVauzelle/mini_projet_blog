@@ -37,7 +37,7 @@
                 <textarea
                     id="description_detail"
                     name="description_detail"
-                    placeholder="Decription de la page détaillée de l'article"
+                    placeholder="Decription de la page détails de l'article"
                     rows="5"
                     maxlength="2500" 
                     required></textarea>     
